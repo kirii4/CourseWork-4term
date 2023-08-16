@@ -1,0 +1,55 @@
+.privacy-text {
+  font-size: 14px;
+  line-height: 160%;
+  color: #b4b4b4;
+  opacity: 0.8;
+  padding-top: 20px;
+  max-width: 350px;
+  margin: 0 auto;
+  &__link {
+    font-size: 14px;
+    line-height: 160%;
+    color: #b4b4b4;
+    opacity: 0.8;
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}
+
+.privacy {
+  &__title {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 140%;
+    color: #ffffff;
+    padding-bottom: 10px;
+  }
+  &__list {
+    list-style: decimal;
+    list-style-position: inside;
+    font-size: 20px;
+    line-height: 140%;
+    color: #ffffff;
+    padding-bottom: 50px;
+  }
+  &__item {
+    padding: 10px 0;
+  }
+  &__info {
+    padding: 20px;
+  }
+  &__text {
+    font-size: 16px;
+    line-height: 160%;
+    color: #ccc;
+  }
+}
+
+@media (max-width: 767px) {
+  .privacy {
+    &__title {
+      font-size: 28px;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+.delivery {
+  &__wrapper {
+    padding-bottom: 63px;
+  }
+  &__title {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 140%;
+    color: #ffffff;
+  }
+  &__info {
+    padding-left: 20px;
+    font-size: 16px;
+    line-height: 160%;
+    color: #ccc;
+  }
+  &__heading {
+    font-size: 20px;
+    line-height: 140%;
+    color: #ffffff;
+    padding-top: 25px;
+    padding-bottom: 12px;
+  }
+  &__text {
+    padding-bottom: 12px;
+  }
+  &__item {
+    display: flex;
+    padding-bottom: 10px;
+  }
+  &__item::before {
+    padding-right: 12px;
+    content: url(../img/elipse.svg);
+  }
+}
+
+.payment-details {
+  color: #ccc;
+  &__summary {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+  }
+  &__icon {
+    top: 5px;
+    right: -28px;
+    position: absolute;
+    stroke: #ccc;
+    fill: #ccc;
+    &:hover {
+      stroke: white;
+      fill: white;
+    }
+  }
+
+  &[open] &__icon {
+    stroke: #ff0000;
+    fill: #ff0000;
+  }
+
+  &__heading {
+    padding-top: 0;
+  }
+
+  &__content {
+    padding: 15px;
+    border: 5px solid red;
+    margin: 15px;
+  }
+}
