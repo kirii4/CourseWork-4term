@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="../css/style.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <link href="../css/aos.css" rel="stylesheet" />
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+   <title>Интернет-магазин "KiRi4 Store"</title>
+</head>
+<body>
+   <main>
+      <section class="promo">
+         <div class="promo__wrapper center">
+            <div class="promo__info">
+               <h1 class="promo__heading">Лучшие<br>комплектующие<br>в городе</h1>
+               <p class="promo__text">Зачем переплачивать за столь необходимые вещи? Мы предлагаем вашему вниманию
+                  каталог новейших и доступных комплектующих
+                  для вашего любимого ПК!</p>
+               <div class="promo__button btn-transition">
+                  <a class="btn-transition__link" href="category.html">Перейти в каталог<svg
+                        class="btn-transition__icon" width="30" height="16" viewBox="0 0 35 16" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M-2.70272e-05 8C-2.70272e-05 7.76429 0.131659 7.53823 0.366064 7.37155C0.600468 7.20487 0.91839 7.11124 1.24989 7.11124H30.7304L22.8634 1.51913C22.7472 1.4365 22.655 1.3384 22.5921 1.23043C22.5292 1.12247 22.4969 1.00675 22.4969 0.889887C22.4969 0.773025 22.5292 0.657308 22.5921 0.549342C22.655 0.441376 22.7472 0.343275 22.8634 0.260642C22.9796 0.178008 23.1176 0.11246 23.2694 0.0677387C23.4213 0.0230177 23.584 0 23.7484 0C23.9127 0 24.0754 0.0230177 24.2273 0.0677387C24.3791 0.11246 24.5171 0.178008 24.6333 0.260642L34.6326 7.37075C34.749 7.45331 34.8414 7.55139 34.9044 7.65937C34.9674 7.76734 34.9998 7.8831 34.9998 8C34.9998 8.1169 34.9674 8.23266 34.9044 8.34063C34.8414 8.44861 34.749 8.54669 34.6326 8.62925L24.6333 15.7394C24.5171 15.822 24.3791 15.8875 24.2273 15.9323C24.0754 15.977 23.9127 16 23.7484 16C23.584 16 23.4213 15.977 23.2694 15.9323C23.1176 15.8875 22.9796 15.822 22.8634 15.7394C22.7472 15.6567 22.655 15.5586 22.5921 15.4507C22.5292 15.3427 22.4969 15.227 22.4969 15.1101C22.4969 14.9933 22.5292 14.8775 22.5921 14.7696C22.655 14.6616 22.7472 14.5635 22.8634 14.4809L30.7304 8.88876H1.24989C0.91839 8.88876 0.600468 8.79513 0.366064 8.62845C0.131659 8.46178 -2.70272e-05 8.23571 -2.70272e-05 8Z"
+                           fill="white" />
+                     </svg>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="description" data-aos="fade-down">
+         <div class="description__wrapper center">
+            <div class="description__info">
+               <h2 class="description__heading">Чем мы занимаемся?</h2>
+               <p class="description__text">Наш магазин специализируется на продаже компьютерных комплектующих, начиная
+                  от корпусов и заканчивая различными деталями для ПК. Мы предлагаем широкий ассортимент хороших
+                  продуктов по самым лучшим ценам в регионе! Порадуйте себя и свой компьютер покупкой новейших образцов
+                  комплектующих!</p>
+            </div>
+         </div>
+      </section>
+      <section class="advantages" data-aos="fade-under">
+         <div class="advantages__wrapper center">
+            <h2 class="advantages__heading">Гарантия качества</h2>
+            <div class="advantages__items">
+               <div class="advantages__item advantage">
+                  <img class="advantage__img" src="../img/advantages-1.svg" alt="photo">
+                  <h4 class="advantage__heading">Только проверенная техника</h4>
+                  <p class="advantage__text">Нашей одной из основной задач является продажа проверенной техники,
+                     исключая покупку сомнительных моделей с высоким
+                     уровнем заводского брака</p>
+               </div>
+               <div class="advantages__item advantage">
+                  <img class="advantage__img" src="../img/advantages-2.svg" alt="photo">
+                  <h4 class="advantage__heading">Лучшие специалисты</h4>
+                  <p class="advantage__text">В команде нашего магазина числятся одни из самых лучших специалистов на
+                     рынке, за помощью к которым может в любой момент
+                     обратиться покупатель</p>
+               </div>
+               <div class="advantages__item advantage">
+                  <img class="advantage__img" src="../img/advantages-3.svg" alt="photo">
+                  <h4 class="advantage__heading">3 года гарантии</h4>
+                  <p class="advantage__text">При приобретении любой техники мы предлагаем ТРИ года гарантии совершенно
+                     бесплатно каждому новому покупателю!</p>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="specials" data-aos="fade-under">
+         <div class="specials__wrapper center">
+            <h2 class="specials__heading">Специальные предложения</h2>
+            <div class="specials__items">
+               <div class="special-item">
+                  <a href="product.html"><img class="special-item__img" src="../img/product-1.png" alt="photo"></a>
+                  <div>
+                     <h4 class="special-item__heading">Cooler Master Blizzard T400 PRO</h4>
+                     <a class="special-item__link" href="product.html">Подробнее</a>
+                  </div>
+               </div>
+               <div class="special-item">
+                  <a href="product.html"><img class="special-item__img" src="../img/category/cpu.png" alt="photo"></a>
+                  <div>
+                     <h4 class="special-item__heading">AMD Ryzen 5 2600</h4>
+                     <a class="special-item__link" href="product.html">Подробнее</a>
+                  </div>
+               </div>
+               <div class="special-item">
+                  <a href="product.html"><img class="special-item__img" src="../img/product-3.png" alt="photo"></a>
+                  <div>
+                     <h4 class="special-item__heading">MSI GeForce GTX 1070 Ti GAMING</h4>
+                     <a class="special-item__link" href="product.html">Подробнее</a>
+                  </div>
+               </div>
+            </div>
+            <div class="promo__button btn-transition">
+               <a class="btn-transition__link" href="category.html">Перейти в каталог<svg class="btn-transition__icon"
+                                                                                          width="30" height="16" viewBox="0 0 35 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M-2.70272e-05 8C-2.70272e-05 7.76429 0.131659 7.53823 0.366064 7.37155C0.600468 7.20487 0.91839 7.11124 1.24989 7.11124H30.7304L22.8634 1.51913C22.7472 1.4365 22.655 1.3384 22.5921 1.23043C22.5292 1.12247 22.4969 1.00675 22.4969 0.889887C22.4969 0.773025 22.5292 0.657308 22.5921 0.549342C22.655 0.441376 22.7472 0.343275 22.8634 0.260642C22.9796 0.178008 23.1176 0.11246 23.2694 0.0677387C23.4213 0.0230177 23.584 0 23.7484 0C23.9127 0 24.0754 0.0230177 24.2273 0.0677387C24.3791 0.11246 24.5171 0.178008 24.6333 0.260642L34.6326 7.37075C34.749 7.45331 34.8414 7.55139 34.9044 7.65937C34.9674 7.76734 34.9998 7.8831 34.9998 8C34.9998 8.1169 34.9674 8.23266 34.9044 8.34063C34.8414 8.44861 34.749 8.54669 34.6326 8.62925L24.6333 15.7394C24.5171 15.822 24.3791 15.8875 24.2273 15.9323C24.0754 15.977 23.9127 16 23.7484 16C23.584 16 23.4213 15.977 23.2694 15.9323C23.1176 15.8875 22.9796 15.822 22.8634 15.7394C22.7472 15.6567 22.655 15.5586 22.5921 15.4507C22.5292 15.3427 22.4969 15.227 22.4969 15.1101C22.4969 14.9933 22.5292 14.8775 22.5921 14.7696C22.655 14.6616 22.7472 14.5635 22.8634 14.4809L30.7304 8.88876H1.24989C0.91839 8.88876 0.600468 8.79513 0.366064 8.62845C0.131659 8.46178 -2.70272e-05 8.23571 -2.70272e-05 8Z"
+                        fill="white" />
+                  </svg>
+               </a>
+            </div>
+         </div>
+      </section>
+      <aside class="feedback">
+         <div class="feedback__wrapper container">
+            <div class="feedback__info" data-aos="fade-up">
+               <h3 class="feedback__heading">Нужна помощь?</h3>
+               <p class="feedback__text">Наши специалисты свяжутся с вами в любое удобное для вас время и
+                  проконсультируют по
+                  всем вопросам.
+               </p>
+               <form class="feedback__form" action="#">
+                  <input required class="feedback__input" type="number" placeholder="+372 (29) 921-12-78">
+                  <button class="feedback__btn" type="submit">Отправить заявку</button>
+               </form>
+            </div>
+         </div>
+      </aside>
+   </main>
+
+   <script src="../js/footer.js"></script>
+   <script src="../js/header.js"></script>
+   <script src="../js/aos.js"></script>
+   <script>
+      AOS.init({
+         offset: 200,
+         duration: 1000,
+         easing: 'ease-in-quad',
+         delay: 100,
+      });
+   </script>
+   <script src="../js/main.js"></script>
+
+
+</body>
+
+</html>

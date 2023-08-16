@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+   <title>Доставка</title>
+</head>
+<body>
+   <main>
+      <div class="breadcrumb">
+         <ul class="breadcrumb__list center">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="index.html">Главная</a></li>
+            <li class="breadcrumb__item">Доставка</li>
+         </ul>
+      </div>
+      <section class="delivery">
+         <div class="delivery__wrapper center">
+            <h3 class="delivery__title">Доставка</h3>
+            <div class="delivery__info">
+               <h4 class="delivery__heading">Дорогие покупатели!</h4>
+               <p class="delivery__text">У Вас появилась возможность заказать понравившийся товар на сайте сразу на дом
+                  или
+                  прямо в офис!</p>
+               <h4 class="delivery__heading">Стандартная доставка</h4>
+               <p class="delivery__text">Есть в наличии: сразу после подтверждения заказа и оплаты заказа, мы отправим
+                  его
+                  в
+                  ваш город.</p>
+               <ul class="delivery__list">
+                  <li class="delivery__item">
+                     <details class="delivery__details payment-details">
+                        <summary class="payment-details__summary">Оплата: онлайн, наличными при получении
+                           <svg class="payment-details__icon" width="16" height="16" viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <circle fill="none" stroke-width="1.1" cx="10" cy="10" r="9"></circle>
+                              <circle stroke="none" cx="10.44" cy="14.42" r="1.05"></circle>
+                              <path fill="none" stroke-width="1.2"
+                                 d="M8.17,7.79 C8.17,4.75 12.72,4.73 12.72,7.72 C12.72,8.67 11.81,9.15 11.23,9.75 C10.75,10.24 10.51,10.73 10.45,11.4 C10.44,11.53 10.43,11.64 10.43,11.75">
+                              </path>
+                           </svg>
+                        </summary>
+                        <div class="payment-details__content">
+                           <h4 class="payment-details__heading delivery__heading">Онлайн оплата по счету</h4>
+                           После согласования всех деталей заказа вы получите счёт, который
+                           можно будет оплатить в
+                           любом
+                           банке.<br>
+                           Предварительно наш специалист проверит конфигурацию, наличие и прочие детали заказа. При
+                           отправке
+                           по миру, к заказу
+                           сразу будет добавлена стоимость доставки до дверей. Чтобы ускорить выполнение заказа,
+                           сообщите
+                           нам
+                           о произведенной
+                           оплате по телефону или электронной почте.
+                        </div>
+                     </details>
+                  </li>
+                  <li class="delivery__item"><span class="delivery__text">Курьер: Европочта, СДЭК, Белпочта</span>
+                  </li>
+               </ul>
+               <h4 class="delivery__heading">Условия оказания услуги Доставка:</h4>
+               <ul class="delivery__list">
+                  <li class="delivery__item">Услуга оказывается при условии наличия товара на складе отгрузки и после
+                     подтверждения возможности отгрузки менеджером.</li>
+                  <li class="delivery__item">Заказы стоимостью свыше 1000 рублей
+                     доставляются по предварительному согласованию.
+                  </li>
+                  <li class="delivery__item">Заказы стоимостью свыше 2500 рублей без
+                     предварительной оплаты не доставляются.
+                  </li>
+               </ul>
+               <h4 class="delivery__heading">Доставка не осуществляется:</h4>
+               <ul class="delivery__list">
+                  <li class="delivery__item">На стройплощадки, вокзалы, в транспортные компании, садово-огородные
+                     товарищества, цеха, пункты общественного питания
+                     (за исключением их административных помещений), режимные, секретные и несуществующие объекты.
+                  </li>
+                  <li class="delivery__item">В парки, лесные массивы, на пляжи или иные места, не имеющие определенного
+                     адреса, либо условий для передачи товаров и
+                     сопроводительной документации, получения оплаты, а также если проезд к месту передачи товара
+                     невозможен на расстояние
+                     более чем 100 метров.
+                  </li>
+                  <li class="delivery__item">В случае, если с клиентом не удалось связаться.
+                  </li>
+               </ul>
+               <h4 class="delivery__heading">Желаем Вам приятных покупок!</h4>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <script src="../js/footer.js"></script>
+   <script src="../js/header.js"></script>
+   <script src="../js/main.js"></script>
+   <script>
+      /* Добавляет фигуру для ссылки доставки в шапке */
+
+      $(function () {
+         $("#menu-item-delivery").addClass("menu__item_bc");
+      });
+   </script>
+
+</body>
+
+</html>

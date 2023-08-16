@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+   <!--<script src="jquery.maskedinput.min.js"></script>-->
+   <title>Корзина</title>
+</head>
+
+<body>
+
+   <main>
+      <div class="breadcrumb">
+         <ul class="breadcrumb__list center">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="index.html">Главная</a></li>
+            <li class="breadcrumb__item">Корзина</li>
+         </ul>
+      </div>
+      <section class="cart">
+         <div class="cart__wrapper center">
+            <h2 class="cart__title">Корзина</h2>
+            <div class="cart__empty">Ваша корзина пуста</div>
+            <form class="cart__form" action="#">
+               <div class="cart__items cart-products">
+                  <div class="cart-products__info">
+                     <span>Товар</span>
+                     <div class="cart-products__columns">
+                        <span>Наличие</span>
+                        <span>Количество</span>
+                        <span>Цена</span>
+                     </div>
+                  </div>
+                  <div class="cart-products__items"></div>
+                  <div class="cart-products__span" id="total-price"></div>
+                  <button id="registrationCart" type="button" class="cart-products__btn">Перейти к оформлению</button>
+               </div>
+               <div class="cart__registration cart-registration">
+                  <div class="cart-registration__wrapper">
+                     <div class="cart-registration__stage">
+                        <div class="cart-registration__title">
+                           <div class="cart-registration__circle">1</div>
+                           <span>Данные покупателя</span>
+                        </div>
+                        <div class="cart-registration__info">
+                           <input autocomplete="name" class="cart-registration__input" required type="text" id="initials"
+                              placeholder="*Фамилия Имя Отчество">
+                           <div class="cart-registration__parent">
+                              <input class="cart-registration__input" required type="tel" maxlength="16" id="phoneNumber"
+                                 placeholder="*Номер телефона">
+                              <input class="cart-registration__input" required type="text" placeholder="*E-mail" id="email">
+                              <input class="cart-registration__input" required type="text" placeholder="*Город" id="town">
+                              <input class="cart-registration__input" required type="text" id="region"
+                                 placeholder="*Край/Область/Регион">
+                              <input class="cart-registration__input" required type="text" id="address"
+                                 placeholder="*Адрес доставки (ул., дом и т.д)">
+                              <input class="cart-registration__input" required type="number" id="postIndex"
+                                 placeholder="*Почтовый индекс">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="cart-registration__stage">
+                        <div class="cart-registration__title">
+                           <div class="cart-registration__circle">2</div>
+                           <span>Доставка</span>
+                        </div>
+                        <div class="cart-registration__info">
+                           <div>
+                              <input required id="delivery-1" name="delivery" value="Белпочта" class="cart-registration__radio" type="radio">
+                              <label for="delivery-1" class="cart-registration__label cart-registration__label_flex">
+                                 <span>Белпочта</span>
+                                 <span>13 р</span>
+                              </label>
+                           </div>
+                           <div>
+                              <input required id="delivery-2" name="delivery" value="Европочта" class="cart-registration__radio" type="radio">
+                              <label for="delivery-2" class="cart-registration__label cart-registration__label_flex">
+                                 <span>Европочта</span>
+                                 <span>15 р</span>
+                              </label>
+                           </div>
+                           <div>
+                              <input required id="delivery-3" name="delivery" value="СДЭК" class="cart-registration__radio" type="radio">
+                              <label for="delivery-3" class="cart-registration__label cart-registration__label_flex">
+                                 <span>СДЭК</span>
+                                 <span>18 р</span>
+                              </label>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="cart-registration__stage">
+                        <div class="cart-registration__title">
+                           <div class="cart-registration__circle">3</div>
+                           <span>Выберите способ оплаты</span>
+                        </div>
+                        <div class="cart-registration__info cart-registration__info_last">
+                           <div>
+                              <input required id="payment-1" name="payment" value="Онлайн" class="cart-registration__radio"
+                                 type="radio">
+                              <label for="payment-1" class="cart-registration__label">
+                                 <span>Онлайн</span>
+                              </label>
+                           </div>
+                           <div>
+                              <input required id="payment-2" name="payment" value="Наличные" class="cart-registration__radio"
+                                 type="radio">
+                              <label for="payment-2" class="cart-registration__label">
+                                 <span>Наличными при получении</span>
+                              </label>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="cart-registration__text">
+                        <span>Подробную информацию о доставке читать </span>
+                        <a class="cart-registration__link" href="delivery.html">Здесь, </a>
+                        <span>о оплате читать </span>
+                        <a class="cart-registration__link" href="payment.html">Здесь.</a>
+                     </div>
+                     <button id="btnSubmit" type="submit" class="cart-products__btn">Оформить заказ</button>
+                     <div class="privacy-text">
+                        <span>Нажимая кнопку Оформить заказ, вы принимаете</span>
+                        <a class="privacy-text__link" href="privacy.html">Политику использования данных.</a>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </section>
+   </main>
+
+   <script src="../js/basket.js"></script>
+   <script src="../js/footer.js"></script>
+   <script src="../js/header.js"></script>
+   <script src="../js/main.js"></script>
+
+   <script>
+      /* При нажатии перейти к оформлению */
+
+      $(function () {
+         $("#registrationCart").click(function () {
+            $(".cart-products").css("display", "none");
+            $(".cart-registration").css("display", "block");
+            $(".cart__title").text("Оформление заказа");
+         });
+      });
+
+      /* При нажатии на оформить заказ */
+
+      $(function () {
+         $('#btnSubmit').click(function () {
+            $('.cart__form').css('display', 'none');
+            $(".cart__title").text('Заказ оформлен успешно!');
+            $('.cart__empty').css('display', 'block');
+            $(".cart__empty").text('Спасибо за заказ! В ближайшее время наш менеджер свяжется с вами для подтверждения заказа.');
+         })
+      });
+
+   </script>
+
+</body>
+
+</html>

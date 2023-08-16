@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+   <title>Каталог</title>
+</head>
+
+<body>
+
+   <main>
+      <div class="breadcrumb">
+         <ul class="breadcrumb__list center">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="index.html">Главная</a></li>
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="category.html">Каталог</a></li>
+            <li class="breadcrumb__item" id="pageCatalog"></li>
+         </ul>
+      </div>
+      <div class="catalog">
+         <div class="catalog__wrapper center">
+            <div class="catalog__title">
+               <span id="title" style="padding-right: 10px;"></span>
+               <form action="#" class="catalog__search search-form">
+                  <label class="search-form__label">
+                     <input class="search-form__input" type="text" placeholder="Поиск по категории">
+                     <img class="search-form__img" src="../img/search.svg" alt="icon">
+                  </label>
+               </form>
+            </div>
+            <div class="catalog__container">
+               <div class="catalog__settings">
+                  <a href="#open-filters" id="linkFilters" class="catalog__link" aria-expanded="false">Фильтры</a>
+                  <div class="catalog__sorting sorting">
+                     <a href="#open-sort" id="sortPrice" class="sorting__link" aria-expanded="false">по цене</a>
+                     <div class="sorting__container">
+                        <div class="sorting__wrapper">
+                           <label class="sorting__label"><input name="price-sort" type="radio"><span
+                                 class="sorting__text">По
+                                 возрастанию</span></label>
+                           <label class="sorting__label"><input name="price-sort" type="radio"><span
+                                 class="sorting__text">По
+                                 убыванию</span></label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="catalog__items">
+                  <div class="catalog__filters filters">
+                     <div class="filters__wrapper">
+                        <form action="#">
+                           <button type="submit" class="filters__btn">Специальные преложения</button>
+                        </form>
+                        <form action="#">
+                           <div class="filters__item" id="hdd">
+                              <details open class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Цена</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul class="filters__price">
+                                       <li><input placeholder="от 30 BYN" class="filters__number" type="number"></li>
+                                       <li><input placeholder="до 35000 BYN" class="filters__number" type="number">
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Форм-фактор</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>2.5</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>3.5</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Объём (ТБ)</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>0.5 ТБ</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>1
+                                                ТБ</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>2
+                                                ТБ</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>4
+                                                ТБ</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>6
+                                                ТБ</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                           </div>
+                           <div class="filters__item" id="ssd">
+                              <details open class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Цена</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul class="filters__price">
+                                       <li><input placeholder="от 30 BYN" class="filters__number" type="number"></li>
+                                       <li><input placeholder="до 35000 BYN" class="filters__number" type="number">
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Тип</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>SSD</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>SSD M.2</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Объём (ГБ)</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Менее 239</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>240 - 479</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>480 - 959</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>960 - 1 919</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>1
+                                                920 и более</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                           </div>
+                           <div class="filters__item" id="powerSupply">
+                              <details open class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Цена</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul class="filters__price">
+                                       <li><input placeholder="от 30 BYN" class="filters__number" type="number"></li>
+                                       <li><input placeholder="до 35000 BYN" class="filters__number" type="number">
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Мощность</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Менее 500</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>500 - 1 000</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Сертификат 80 plus</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Bronze</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Gold</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Platinum</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Standart</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Silver</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>нет</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                           </div>
+                           <div class="filters__item" id="videoCard">
+                              <details open class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Цена</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul class="filters__price">
+                                       <li><input placeholder="от 30 BYN" class="filters__number" type="number"></li>
+                                       <li><input placeholder="до 35000 BYN" class="filters__number" type="number">
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Производитель</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>NVIDIA</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>AMD</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Объем видеопамяти</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>1
+                                                ГБ</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>2
+                                                ГБ</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>3
+                                                ГБ</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>4
+                                                ГБ</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>6
+                                                ГБ</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>8
+                                                ГБ</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                           </div>
+                           <div class="filters__item" id="soundCard">
+                              <details open class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Цена</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul class="filters__price">
+                                       <li><input placeholder="от 30 BYN" class="filters__number" type="number"></li>
+                                       <li><input placeholder="до 35000 BYN" class="filters__number" type="number">
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Интерфейс подключения</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>MIO</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>PCI</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>PCI-E</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>USB</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>USB Type-c</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Формат звуковой карты</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>2.0</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>4.0</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>5.1</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>7.1</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                           </div>
+                           <div class="filters__item" id="housing">
+                              <details open class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Цена</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul class="filters__price">
+                                       <li><input placeholder="от 30 BYN" class="filters__number" type="number"></li>
+                                       <li><input placeholder="до 35000 BYN" class="filters__number" type="number">
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Форм-фактор</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Нестандартный</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>ATX, mATX,
+                                                EATX</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>ATX, mATX,
+                                                Mini-ITX</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>mATX,
+                                                Mini-ITX</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>ATX, mATX</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>mini-ITX</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                           </div>
+                           <div class="filters__item" id="cooling">
+                              <details open class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Цена</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul class="filters__price">
+                                       <li><input placeholder="от 30 BYN" class="filters__number" type="number"></li>
+                                       <li><input placeholder="до 35000 BYN" class="filters__number" type="number">
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Тип</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Термопаста</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Кулеры для
+                                                процессоров</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Вентиляторы для
+                                                корпуса</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Жидкостные системы
+                                                охлаждения</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                           </div>
+                           <div class="filters__item" id="motherboard">
+                              <details open class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Цена</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul class="filters__price">
+                                       <li><input placeholder="от 30 BYN" class="filters__number" type="number"></li>
+                                       <li><input placeholder="до 35000 BYN" class="filters__number" type="number">
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Форм-фактор</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Нестандартный</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>ATX, mATX,
+                                                EATX</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>ATX, mATX,
+                                                Mini-ITX</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>mATX,
+                                                Mini-ITX</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>ATX, mATX</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>mini-ITX</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Сокет</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>cpu onboard</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>FCBGA1090</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>LGA 1151</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>AM4</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>LGA 1150</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>LGA 1200</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                           </div>
+                           <div class="filters__item" id="ram">
+                              <details open class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Цена</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul class="filters__price">
+                                       <li><input placeholder="от 30 BYN" class="filters__number" type="number"></li>
+                                       <li><input placeholder="до 35000 BYN" class="filters__number" type="number">
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Объем</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>4
+                                                Гб</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>8
+                                                Гб</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>16
+                                                Гб</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>32
+                                                Гб</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Тип</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>DDR3</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>DDR4</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Количество модулей в комплекте (шт)</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>1</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>2</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Частота</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>2400 Mhz</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>2666 Mhz</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>3000 Mhz</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>3200 Mhz</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>3600 Mhz</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>4000 Mhz</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                           </div>
+                           <div class="filters__item" id="cpu">
+                              <details open class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Цена</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul class="filters__price">
+                                       <li><input placeholder="от 30 BYN" class="filters__number" type="number"></li>
+                                       <li><input placeholder="до 35000 BYN" class="filters__number" type="number">
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Сокет</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>cpu onboard</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>FCBGA1090</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>LGA 1151</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>AM4</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>LGA 1150</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>LGA 1200</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Количество ядер</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>2</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>4</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>6</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>8</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>10</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>12</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>16</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                              <details class="filters__details">
+                                 <summary class="filters__title">
+                                    <span>Производитель</span>
+                                    <svg class="filters__icon" width="28" height="17" viewBox="0 0 28 17" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M2 2L14 14L26 2" stroke-width="4" />
+                                    </svg>
+                                 </summary>
+                                 <div class="filters__info">
+                                    <ul>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>Intel</span></label>
+                                       </li>
+                                       <li class="filters__li">
+                                          <label class="filters__label"><input class="filters__check"
+                                                type="checkbox"><span>AMD</span></label>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </details>
+                           </div>
+                           <button class="filters__btn filters__submit" type="submit">Показать</button>
+                        </form>
+                     </div>
+                  </div>
+                  <div class="catalog__products catalog-product">
+                     <div class="catalog-product__wrapper">
+                        <div class="catalog-product__text">По вашему запросу ничего не найдено.</div>
+                        <div class="catalog-product__items">
+                           <div class="product-catalog"></div>
+                        </div>
+                        <div class="catalog-product__pagination pagination">
+                           <div class="pagination__wrapper">
+                              <a class="pagination__arrow"><svg style="transform: rotate(-180deg);"
+                                    class="pagination__icon" width="24" height="20" viewBox="0 0 24 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                       d="M2.08317 11.4167H18.8848L13.7423 17.5933C13.6233 17.7366 13.5336 17.9019 13.4784 18.0798C13.4232 18.2577 13.4036 18.4448 13.4207 18.6302C13.4553 19.0048 13.6372 19.3504 13.9265 19.5908C14.2158 19.8313 14.5888 19.947 14.9634 19.9125C15.338 19.8779 15.6835 19.696 15.924 19.4067L23.0073 10.9067C23.055 10.8391 23.0976 10.768 23.1348 10.6942C23.1348 10.6233 23.2057 10.5808 23.234 10.51C23.2982 10.3476 23.3318 10.1747 23.3332 10C23.3318 9.82535 23.2982 9.65245 23.234 9.49001C23.234 9.41918 23.1632 9.37668 23.1348 9.30585C23.0976 9.23198 23.055 9.16095 23.0073 9.09335L15.924 0.593346C15.7908 0.433429 15.624 0.304824 15.4355 0.216678C15.2469 0.128531 15.0413 0.0830082 14.8332 0.0833462C14.5022 0.0826995 14.1814 0.197981 13.9265 0.40918C13.7831 0.528107 13.6645 0.674166 13.5776 0.838992C13.4906 1.00382 13.4371 1.18417 13.42 1.36972C13.4029 1.55527 13.4226 1.74237 13.4779 1.92031C13.5332 2.09825 13.623 2.26353 13.7423 2.40668L18.8848 8.58335H2.08317C1.70745 8.58335 1.34711 8.7326 1.08144 8.99828C0.81576 9.26396 0.666504 9.62429 0.666504 10C0.666504 10.3757 0.81576 10.7361 1.08144 11.0017C1.34711 11.2674 1.70745 11.4167 2.08317 11.4167Z" />
+                                 </svg></a>
+                              <div class="pagination__links">
+                                 <a class="pagination__link pagination__link_bc" href="#">1</a>
+                                 <a class="pagination__link" href="#">2</a>
+                                 <a class="pagination__link" href="#">3</a>
+                              </div>
+                              <a class="pagination__arrow"><svg class="pagination__icon" width="24" height="20"
+                                    viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                       d="M2.08317 11.4167H18.8848L13.7423 17.5933C13.6233 17.7366 13.5336 17.9019 13.4784 18.0798C13.4232 18.2577 13.4036 18.4448 13.4207 18.6302C13.4553 19.0048 13.6372 19.3504 13.9265 19.5908C14.2158 19.8313 14.5888 19.947 14.9634 19.9125C15.338 19.8779 15.6835 19.696 15.924 19.4067L23.0073 10.9067C23.055 10.8391 23.0976 10.768 23.1348 10.6942C23.1348 10.6233 23.2057 10.5808 23.234 10.51C23.2982 10.3476 23.3318 10.1747 23.3332 10C23.3318 9.82535 23.2982 9.65245 23.234 9.49001C23.234 9.41918 23.1632 9.37668 23.1348 9.30585C23.0976 9.23198 23.055 9.16095 23.0073 9.09335L15.924 0.593346C15.7908 0.433429 15.624 0.304824 15.4355 0.216678C15.2469 0.128531 15.0413 0.0830082 14.8332 0.0833462C14.5022 0.0826995 14.1814 0.197981 13.9265 0.40918C13.7831 0.528107 13.6645 0.674166 13.5776 0.838992C13.4906 1.00382 13.4371 1.18417 13.42 1.36972C13.4029 1.55527 13.4226 1.74237 13.4779 1.92031C13.5332 2.09825 13.623 2.26353 13.7423 2.40668L18.8848 8.58335H2.08317C1.70745 8.58335 1.34711 8.7326 1.08144 8.99828C0.81576 9.26396 0.666504 9.62429 0.666504 10C0.666504 10.3757 0.81576 10.7361 1.08144 11.0017C1.34711 11.2674 1.70745 11.4167 2.08317 11.4167Z" />
+                                 </svg></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </main>
+
+   <script src="../js/basket.js"></script>
+   <script src="../js/catalog.js"></script>
+   <script src="../js/footer.js"></script>
+   <script src="../js/header.js"></script>
+   <script src="../js/main.js"></script>
+
+   <script>
+
+      /* Для каждого главного заголовка свои фильтры.Если переписать главный заголовок, то появятся соотвествующие фильтры. https://docs.google.com/document/d/1NeHJe-xpSgaV-57tVnwpelWC3MrYObflP6cnLAA84eM/edit */
+
+      $(function () {
+         let title = ['Жесткие диски', 'SSD диски', 'Блоки питания', 'Видеокарты', 'Звуковые карты', 'корпуса', 'Охлаждение компьютера', 'Материнские платы', 'Оперативная память', 'Процессоры'];
+
+         let filters = [$('#hdd'), $('#ssd'), $('#powerSupply'), $('#videoCard'), $('#soundCard'), $('#housing'), $('#cooling'), $('#motherboard'), $('#ram'), $('#cpu')];
+
+         for (let i = 0; i < title.length; i++) {
+            if (title[i] == $('#title').text()) {
+               filters[i].css('display', 'block');
+            }
+         }
+      });
+
+      /* Если не будет товаров в каталоге, то сообщение, что по вашему запросу ничего не найдено */
+
+      $(function () {
+         if (!$('.product-catalog').length > 0) {
+            $('.catalog-product__pagination').css('display', 'none');
+            $('.catalog-product__items').css('display', 'none');
+            $('.catalog-product__text').css('display', 'block');
+         }
+         else if ($('.product-catalog').length > 7) {
+            $('.catalog-product__pagination').css('display', 'block');
+         }
+      });
+
+      /* функция для открытия меню сортировки */
+
+      $(function () {
+         $('#sortPrice').on('click', function (open) {
+            var menuItem = $(open.currentTarget);
+
+            if (menuItem.attr('aria-expanded') === 'true') {
+               $(this).attr('aria-expanded', 'false');
+            } else {
+               $(this).attr('aria-expanded', 'true');
+            }
+         });
+      });
+
+      /* функция для открытия фильтров. Для телефонов скрываются фильтры, но можно вызвать их кнопкой */
+
+      $(function () {
+         $('#linkFilters').on('click', function (open) {
+            var menuItem = $(open.currentTarget);
+
+            if (menuItem.attr('aria-expanded') === 'true') {
+               $(this).attr('aria-expanded', 'false');
+               $(".catalog__filters").css('display', 'none');
+            } else {
+               $(this).attr('aria-expanded', 'true');
+               $(".catalog__filters").css('display', 'block');
+            }
+         });
+      });
+   </script>
+</body>
+
+</html>

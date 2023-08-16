@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Профиль</title>
+</head>
+
+<body>
+
+<main>
+    <div class="breadcrumb">
+        <ul class="breadcrumb__list center">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="index.html">Главная</a></li>
+            <li class="breadcrumb__item">Профиль</li>
+        </ul>
+    </div>
+    <section class="profile">
+        <div class="profile__wrapper">
+            <div id="status-bar"></div>
+            <div>
+                <form class="profile-info__form" id="profile-info__form">
+                    <div class="profile__content profile-info">
+                        <div class="profile-info__avatar avatar">
+                            <input id="avatar-upload" class="avatar__upload" type="file" accept="image/*">
+                            <div id="avatar-img" class="avatar__img"
+                                 style="background: url(../img/avatar.jpg); background-size: cover;">
+                            </div>
+                            <label for="avatar-upload" class="avatar__label">
+                                <svg width="32" height="32" aria-hidden="true" focusable="false" data-prefix="fas"
+                                     data-icon="camera" class="svg-inline--fa fa-camera fa-w-16" role="img"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path fill="white"
+                                          d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z">
+                                    </path>
+                                </svg>
+                                <span class="avatar__text">Загрузить</span>
+                            </label>
+                        </div>
+                        <div class="profile-info__names">
+                            <label class="profile__label"><span>Имя</span>
+                                <div class="profile__check">
+                                    <input required class="profile__input" id="name" type="text" placeholder="Имя">
+                                    <span class="error"></span>
+                                </div>
+                            </label>
+                            <label class="profile__label"><span>Фамилия</span>
+                                <div class="profile__check">
+                                    <input required class="profile__input" id="surname" type="text"
+                                           placeholder="Фамилия">
+                                    <span class="error"></span>
+                                </div>
+                            </label>
+                        </div>
+                        <label class="profile__label"><span>Почта</span>
+                            <div class="profile__check">
+                                <input autocomplete="email" required class="profile__input" id="email" type="email"
+                                       placeholder="E-mail" readonly>
+                                <span class="error"></span>
+                                <div id="error-name" style="font-size: 18px; color: deeppink; margin-top: 5px;
+                                                              font-weight: bold; text-align: center">
+                                </div>
+                            </div>
+                        </label>
+                        <div style="text-align: center;">
+                            <button class="profile__btn" id="save-profile" type="submit">Сохранить</button>
+                        </div>
+                    </div>
+                </form>
+                <form class="profile-guard__form" id="profile-guard__form">
+                    <div>
+                        <div class="profile__check">
+                            <h2 class="profile-guard__heading" style="text-align: left;">Сменить пароль</h2>
+                            <br>
+                            <br>
+                            <br>
+                            <input required class="profile__input" id="oldpassword" type="password"
+                                   placeholder="*Текущий пароль">
+                            <span class="error"></span>
+                        </div>
+                        <div id="error-message" style="font-size: 18px; color: deeppink; margin-bottom: 5px; font-weight: bold;
+                                                   text-align: center"></div>
+                        <a class="profile-guard__link" href="forgot-password.html">Забыли
+                            пароль?</a>
+                        <div class="profile__check">
+                            <input required class="profile__input" id="newpassword" type="password"
+                                   placeholder="*Новый пароль">
+                            <span class="error"></span>
+                        </div>
+                        <div class="profile__check">
+                            <input required class="profile__input" id="newpassword1" type="password"
+                                   placeholder="*Повторите пароль">
+                            <span class="error"></span>
+                        </div>
+                        <div id="error-message-new-password" style="font-size: 18px; color: deeppink; margin-top: 5px;
+                                                                 font-weight: bold; text-align: center"></div>
+                        <div style="display: flex; justify-content: center;">
+                            <button class="profile__btn" id="save-password" type="submit">Сохранить</button>
+                            <button class="profile__btn" id="logout" type="submit">Выйти</button>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                </form>
+                <div id="my-order">
+                    <div style="display: flex; justify-content: center;">
+                        <button class="profile__btn" id="my-order-modal" type="submit">Мои заказы</button>
+                    </div>
+                </div>
+                <form class="profile-catalog__form" id="profile-catalog__form">
+                    <div class="catalog__content">
+                        <h2 class="profile-catalog__heading">Каталог</h2>
+                        <div class="name-device">
+                            <label for="nameDevice" class="admin__form-label">Название товара</label>
+                            <input type="text" class="profile__input" id="nameDevice"
+                                   placeholder="Введите название товара" required>
+                        </div>
+                        <div class="price-device">
+                            <label for="priceDevice" class="admin__form-label">Цена товара</label>
+                            <input type="number" class="profile__input" id="priceDevice"
+                                   placeholder="Введите цену товара" pattern="[0-9]+([\.][0-9]+)?" min="0" max="100000"
+                                   required>
+                        </div>
+                        <div class="maker-product">
+                            <br>
+                            <br>
+                            <label for="product-description" class="profile-catalog__heading" id="makerDevice">Произодитель</label>
+                            <br>
+                            <br>
+                            <label>
+                                <select class="profile__input" id="select-maker" required>
+                                    <option value="" selected>Выберите производителя</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="type">
+                            <br>
+                            <br>
+                            <label for="product-description" class="profile-catalog__heading" id="typeDevice">Тип
+                                устройства</label>
+                            <br>
+                            <br>
+                            <label>
+                                <select class="profile__input" id="select-type" required>
+                                    <option value="" selected>Выберите тип устройства</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="description-product">
+                            <br>
+                            <br>
+                            <label for="product-description" class="profile-catalog__heading" id="descriptionDevice">Описание
+                                товара</label>
+                            <br>
+                            <br>
+                            <textarea rows="7" cols="100" style="font-size: 15px" class="admin__form-textarea"
+                                      id="product-description"
+                                      placeholder="Введите описание товара"></textarea>
+                        </div>
+                        <div class="admin__form-group">
+                            <br>
+                            <br>
+                            <br>
+                            <label for="imgDevice" class="profile-catalog__heading">Изображение товара</label>
+                            <br>
+                            <br>
+                            <input type="file" class="avatar__input" id="imgDevice" required style="font-size: 22px; margin: 0 auto;
+                                                        display: block; width: 200px;">
+                            <br>
+                        </div>
+                        <div id="error-message-new-device" style="font-size: 18px; color: deeppink; margin-top: 5px;
+                                                                 font-weight: bold; text-align: center"></div>
+                        <div style="display: flex; justify-content: center;">
+                            <button class="profile__btn" id="add-device" type="submit">Добавить товар</button>
+                        </div>
+                    </div>
+                    <div class="admin__form-group">
+                        <br>
+                        <br>
+                        <br>
+                        <label for="imgDevice" class="profile-catalog__heading">Списки</label>
+
+                        <br>
+                    </div>
+                </form>
+                <div class="product-catalog-show" id="product-catalog-show" style="display: none;">
+                    <div class="button-wrapper">
+                        <button class="profile__btn" id="show-device" type="submit">Список товаров</button>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="product-order-show" id="product-order-show" style="display: none;">
+                    <div class="button-wrapper">
+                        <button class="profile__btn" id="show-order" type="submit">Список заказов</button>
+                    </div>
+                </div>
+                    <div id="modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <table id="device-table">
+                                <caption style="color: red; font-size: 45px">Список товаров<br><br></caption>
+                                <thead>
+                                <tr>
+                                    <th data-column="id">ID</th>
+                                    <th data-column="brand">Brand</th>
+                                    <th data-column="type">Type</th>
+                                    <th data-column="name">Name</th>
+                                    <th data-column="price">Price</th>
+                                    <th data-column="update">Update</th>
+                                    <th data-column="delete">Delete</th>
+                                    <th data-column="save">Save</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                <div id="modal-order" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <table id="order-table">
+                            <caption style="color: red; font-size: 45px">Список заказов<br><br></caption>
+                            <thead>
+                            <tr>
+                                <th data-column="id">ID</th>
+                                <th data-column="email">Email</th>
+                                <th data-column="town">Town</th>
+                                <th data-column="device">Device</th>
+                                <th data-column="name">Status</th>
+                                <th data-column="delete">Delete</th>
+                                <th data-column="deliver">Deliver</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="my-order-id" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <table id="my-order-table">
+                            <caption style="color: red; font-size: 45px">Мой заказ<br><br></caption>
+                            <thead>
+                            <tr>
+                                <th data-column="id">ID</th>
+                                <th data-column="email">Email</th>
+                                <th data-column="town">Town</th>
+                                <th data-column="device">Device</th>
+                                <th data-column="status">Status</th>
+                                <th data-column="decline">Decline</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="../js/footer.js"></script>
+<script src="../js/profile.js"></script>
+<script src="../js/header.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
+

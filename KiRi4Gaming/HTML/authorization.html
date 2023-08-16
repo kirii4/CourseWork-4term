@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+   <title>Авторизация</title>
+</head>
+<body>
+   <main class="main-authorization content-bc">
+      <div class="breandcrumb">
+         <ul class="breadcrumb__list center">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="index.html">Главная</a></li>
+            <li class="breadcrumb__item">Вход</li>
+         </ul>
+      </div>
+      <section class="enter-profile">
+         <div class="enter-profile__wrapper container">
+            <div class="enter-profile__info">
+               <h3 class="enter-profile__heading">Авторизуйтесь</h3>
+               <form action="#" class="enter-profile__form" id="auth-form">
+                  <div class="enter-profile__check">
+                     <span class="error"></span>
+                     <input required autocomplete="email" id="email" class="enter-profile__input" type="email"
+                        placeholder="E-mail">
+                  </div>
+                  <div class="enter-profile__check">
+                     <span class="error"></span>
+                     <input required minlength="4" class="enter-profile__input" id="password" type="password" placeholder="Пароль">
+                  </div>
+                  <label class="enter-profile__label"><input style="cursor: pointer; margin-right: 6px;"
+                        type="checkbox">Запомнить меня</label>
+                  <div id="error-message" style="font-size: 18px; color: deeppink; margin-top: 5px; font-weight: bold;"></div>
+                  <button class="enter-profile__btn" id="enter-profile" type="submit">Войти</button>
+               </form>
+               <div class="enter-profile__new">
+                  <a class="enter-profile__link enter-profile__link_padding" href="forgot-password.html">Забыли
+                     пароль?</a>
+                  <a class="enter-profile__link" href="registration.html">Зарегистрироваться</a>
+               </div>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script type="module" src="../js/authorization.js"></script>
+   <script src="../js/footer.js"></script>
+   <script src="../js/header.js"></script>
+   <script src="../js/main.js"></script>
+   <script src="../js/aos.js"></script>
+</body>
+</html>

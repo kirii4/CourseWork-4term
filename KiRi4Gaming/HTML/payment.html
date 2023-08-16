@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+   <title>Оплата</title>
+</head>
+
+<body>
+
+   <main>
+      <div class="breadcrumb">
+         <ul class="breadcrumb__list center">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="index.html">Главная</a></li>
+            <li class="breadcrumb__item">Оплата</li>
+         </ul>
+      </div>
+      <section class="payment">
+         <div class="payment__wrapper center">
+            <h3 class="payment__title">Оплата</h3>
+            <div class="payment__info">
+               <h4 class="payment__heading">Дорогие покупатели!</h4>
+               <p class="payment__text">Предлагаем Вам максимально доступные, быстрые и надежные варианты оплаты. Мы
+                  гарантируем фиксированную цену при любой
+                  форме оплаты, без дополнительных комиссий и процентов.</p>
+               <h4 class="payment__heading">Оплата</h4>
+               <p class="payment__text">Вы можете оплатить товар непосредственно при доставке или оплатить онлайн.
+                  Осуществив оплату, вы получаете полный
+                  комплект документов - кассовый чек, расходную накладную и гарантийный талон. Цены в нашем
+                  Интернет-магазине
+                  окончательные без дополнительных комиссий, включая все налоги.</p>
+               <ul class="payment__list">
+                  <li class="payment__item">
+                     <details class="payment__details payment-details">
+                        <summary class="payment-details__summary">Онлайн оплата
+                           <svg class="payment-details__icon" width="16" height="16" viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <circle fill="none" stroke-width="1.1" cx="10" cy="10" r="9"></circle>
+                              <circle stroke="none" cx="10.44" cy="14.42" r="1.05"></circle>
+                              <path fill="none" stroke-width="1.2"
+                                 d="M8.17,7.79 C8.17,4.75 12.72,4.73 12.72,7.72 C12.72,8.67 11.81,9.15 11.23,9.75 C10.75,10.24 10.51,10.73 10.45,11.4 C10.44,11.53 10.43,11.64 10.43,11.75">
+                              </path>
+                           </svg>
+                        </summary>
+                        <div class="payment-details__content">
+                           <h4 class="payment-details__heading payment__heading">Онлайн оплата по счету</h4>
+                           После согласования всех деталей заказа вы получите счёт, который
+                           можно будет оплатить в
+                           любом
+                           банке.<br>
+                           Предварительно наш специалист проверит конфигурацию, наличие и прочие детали заказа. При
+                           отправке
+                           по миру, к заказу
+                           сразу будет добавлена стоимость доставки до дверей. Чтобы ускорить выполнение заказа,
+                           сообщите
+                           нам
+                           о произведенной
+                           оплате по телефону или электронной почте.
+                        </div>
+                     </details>
+                  </li>
+                  <li class="payment__item"><span class="payment__text">Оплата наличными при получении</span>
+                  </li>
+               </ul>
+               <h4 class="payment__heading">Желаем Вам приятных покупок!</h4>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <script src="../js/footer.js"></script>
+   <script src="../js/header.js"></script>
+   <script src="../js/main.js"></script>
+   <script>
+
+      /* Добавляет фигуру для ссылки оплаты в шапке */
+
+      $(function () {
+         $("#menu-item-payment").addClass("menu__item_bc");
+      });
+   </script>
+</body>
+
+</html>
